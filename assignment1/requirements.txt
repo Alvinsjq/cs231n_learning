@@ -1,0 +1,6 @@
+argparse==1.2.1
+backports.ssl-match-hostname==3.5.0.1
+certifi==2015.11.20.1
+future==0.16.0
+gnureadline==6.3.3
+site==0.0.1
