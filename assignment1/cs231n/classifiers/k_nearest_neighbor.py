@@ -165,6 +165,7 @@ class KNearestNeighbor(object):
       # Hint: Look up the function numpy.argsort.                             #
       #########################################################################
 
+      # closest_y = self.y_train[np.argsort(dists[i])[:k]]
       closest_y = self.y_train[np.argsort(dists[i])[:k]]
 
       #pass
@@ -178,7 +179,7 @@ class KNearestNeighbor(object):
 
       y_pred[i] = np.argmax(np.bincount(closest_y))
 
-      pass
+      #pass
       #########################################################################
       #                           END OF YOUR CODE                            # 
       #########################################################################
