@@ -74,8 +74,8 @@ class KNearestNeighbor(object):
         # not use a loop over dimension.                                    #
         #####################################################################
         
-        dists[i, j] =  np.sqrt(np.sum((self.X_train[j, :] - X[i, :]) ** 2))
-        
+        # dists[i, j] =  np.sqrt(np.sum((self.X_train[j, :] - X[i, :]) ** 2))
+        dists[i][j] = np.sqrt(np.sum(np.square(X[i] - self.X_train[j])))
         #pass
         #####################################################################
         #                       END OF YOUR CODE                            #
@@ -99,7 +99,9 @@ class KNearestNeighbor(object):
       # points, and store the result in dists[i, :].                        #
       #######################################################################
 
-      dists[i] = np.sqrt(np.sum((self.X_train - X[i, :]) ** 2, axis = 1))
+      # dists[i] = np.sqrt(np.sum((self.X_train - X[i, :]) ** 2, axis = 1))
+
+      dists[i] = np.sqrt(np.sum(np.square(self.X_train - X[i]), axis = 1))
 
       #pass
       #######################################################################
@@ -131,8 +133,9 @@ class KNearestNeighbor(object):
     #########################################################################
 
     #dists = np.sqrt(np.sum(X_train ** 2, axis = 1) + np.transpose(np.sum(X ** 2, axis = 1) - 2 * np.dot(X, self.X_train.T))
-    dists = np.sqrt(-2*np.dot(X, self.X_train.T) + np.sum(np.square(self.X_train), axis = 1) + np.transpose([np.sum(np.square(X), axis = 1)]))
+    # dists = np.sqrt(-2*np.dot(X, self.X_train.T) + np.sum(np.square(self.X_train), axis = 1) + np.transpose([np.sum(np.square(X), axis = 1)]))
     #pass
+    dists = np.sqrt(-2*np.dot(X, self.X_train.T) + np.sum(np.square(self.X_train), axis = 1) + np.transpose([np.sum(np.square(X), axis = 1)]))
     #########################################################################
     #                         END OF YOUR CODE                              #
     #########################################################################
